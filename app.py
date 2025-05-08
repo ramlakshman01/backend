@@ -9,7 +9,8 @@ from flask_cors import CORS
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
+CORS(app, resources={r"/*": {"origins": ["http://localhost:3000", "https://zara-college-predictor.netlify.app"]}})
 
 # ✅ Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
@@ -36,6 +37,9 @@ def get_db_connection():
 @app.route("/")
 def home():
     return "✅ Flask App is Running on Clever Cloud!", 200
+@app.route('/health')
+def health():
+    return "OK", 200
 
 @app.route('/predict', methods=['POST'])
 def predict_colleges():
