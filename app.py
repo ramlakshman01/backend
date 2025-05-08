@@ -18,15 +18,15 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(
 def get_db_connection():
     try:
         return mysql.connector.connect(
-            # host=os.getenv("MYSQL_HOST"),
-            # user=os.getenv("MYSQL_USER"),
-            # password=os.getenv("MYSQL_PASSWORD"),
-            # database=os.getenv("MYSQL_DATABASE"),
-            # port=int(os.getenv("MYSQL_PORT", 3306))
-              host="localhost",
-        user="root",
-        password="manoj",
-        database="college_predictor"
+            host=os.getenv("MYSQL_HOST"),
+            user=os.getenv("MYSQL_USER"),
+            password=os.getenv("MYSQL_PASSWORD"),
+            database=os.getenv("MYSQL_DATABASE"),
+            port=int(os.getenv("MYSQL_PORT", 3306))
+        #       host="localhost",
+        # user="root",
+        # password="manoj",
+        # database="college_predictor"
         )
     except Exception as e:
         logging.error(f"❌ Database Connection Error: {e}")
